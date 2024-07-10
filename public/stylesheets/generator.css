@@ -1,0 +1,140 @@
+body {
+    font-size: 18px;
+    font-family: "Merriweather", serif;
+    line-height: 1.5;
+    text-align: left;
+    background-color: #f7fff7;
+    color: #292f36;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin: 0;
+    padding: 16px 0 8px 0;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin: 0;
+    padding: 12px 0 8px 0;
+  }
+  
+  p {
+    margin: 8px 0;
+  }
+  
+  .container {
+    margin: 64px auto;
+    padding: 40px;
+    width: 640px;
+    border-radius: 24px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  }
+  
+  form {
+    display: flex;
+    padding: 0 0 12px 0;
+  }
+  
+  .instructions {
+    padding: 16px;
+    border: 1px solid #9fa4a9;
+    border-radius: 48px;
+    font-size: 18px;
+    width: 80%;
+    color: #292f36;
+  }
+  
+  .submit-button {
+    font-size: 18px;
+    font-weight: 600;
+    color: #292f36;
+    background-color: #21c063;
+    border-radius: 48px;
+    border: none;
+    padding: 16px 24px;
+    margin-left: 12px;
+  }
+
+  .button{
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: #d11717;
+    border-radius: 48px;
+    border: none;
+    padding: 16px 24px;
+    margin-left: 12px;
+  }
+  .youtube{
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .hidden {
+    display: none;
+  }
+  
+  .recipe {
+    line-height: 2;
+    background-color: #f7f7f7;
+    border-left: 6px solid #508f8b;
+    border-radius: 0 12px 12px 0;
+    padding: 12px 24px;
+  }
+  
+  em {
+    color: #508f8b;
+    margin-top: 24px;
+  }
+  
+  .hints {
+    font-size: 14px;
+    color: #6a7888;
+    padding-bottom: 24px;
+  }
+  
+  .blink {
+    animation: blink 1s linear infinite;
+  }
+  
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  footer {
+    font-size: 14px;
+    color: #6a7888;
+    text-align: center;
+    margin-top: auto;
+    padding-bottom: 16px;
+  }
+  
+  a {
+    color: #3c958f;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
