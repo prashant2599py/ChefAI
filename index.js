@@ -24,25 +24,30 @@ app.get('/generator', (req, res) => {
    })
 })
 
-app.get("/login", (req, res) => {
-   res.render('login');
+app.get("/user/login", (req, res) => {
+   return res.render('login');
 })
 
 app.get("/loader", (req, res) => {
+   const queryString  = req.query.q;
+   const decodedString = decodeURIComponent(queryString);
+   console.log(decodedString);
    res.render('loader',{
       youtube_apiKey : process.env.YOUTUBE_API_KEY,
+      textData : decodedString
    });
 })
 
 
-app.get("/loader/:query", (req, res) => {
-   const data = req.params.query;
-    res.render('loader', {
-      youtube_apiKey : process.env.YOUTUBE_API_KEY,
-      textData : data
-    });
- })
- 
+// app.get("/loader/:query", (req, res) => {
+//    const data = req.params.query;
+//    console.log(data);
+//     return res.render('loader', {
+//       youtube_apiKey : process.env.YOUTUBE_API_KEY,
+//       // queryData : data
+//      });
+//  })
+
 // app.get("/loader/", (req, res) => {
 //     res.render('loader', {
 //       youtube_apiKey : process.env.YOUTUBE_API_KEY,
