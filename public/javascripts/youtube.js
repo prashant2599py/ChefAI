@@ -2,8 +2,8 @@
   const videoSection = document.querySelector("section")
   const loader = document.querySelector('.container');
 
-
-  const api  = `https://youtube.googleapis.com/youtube/v3/search?key=${YOUTUBE_APIKEY}&type=video&part=snippet&q=${encodeURIComponent(queryParameter)}`;
+  // const textData = "<%= white sauce pasta%>"
+  const api  = `https://youtube.googleapis.com/youtube/v3/search?key=${YOUTUBE_APIKEY}&type=video&part=snippet&q=${encodeURIComponent(queryData)}`;
   console.log(api);
   
   function getVideos(){

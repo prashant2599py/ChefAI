@@ -31,6 +31,7 @@ function displayRecipe(response) {
   document.querySelector("button").addEventListener('click', function(event){
     event.preventDefault();
     const query = document.getElementById("inputvalue").value;
-    const link = `/api/videos/?q=${encodeURIComponent(query)}`;
-    window.redirect(link)
+    // const link1 = `/loader/?q=${encodeURIComponent(query)}`;
+    const link = `/loader/`
+    window.location.href = link;
   })
