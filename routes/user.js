@@ -5,6 +5,10 @@ require('dotenv').config();
 const  JWT_SECRET  = process.env.JWT_SECRET;
 const { User } = require("../db")
 
+router.get("/login", (req, res) => {
+    res.render("login");
+})
+
 router.post("/signup", async (req, res) => {
 
     const username = req.body.username,
@@ -75,6 +79,9 @@ router.post("/signin", async (req, res) => {
     }
 })
 
+router.post("/signup" ,(req, res) => {
+    res.send(`Your username : ${req.body.username} and your email is : ${req.body.email}`); 
+})
 
 
 module.exports = router;

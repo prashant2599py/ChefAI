@@ -2,31 +2,30 @@ const express = require('express')
 const app = express();
 const path = require("path");
 let cors = require('cors');
+const bodyParser = require('body-parser');
 const userRouter = require('./routes/user')
 // const staticRoute  = require('./routes/staticRouter');
 
 
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));  // For accepting form data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));  // For accepting form data
 app.set('view engine', 'ejs');
 app.set('views', path.resolve("./views"));
 app.use(express.static('./public'));
-app.use("/user", userRouter)
+app.use("/", userRouter)
 // app.use("/", staticRoute);
 
 app.get('/', function(req, res){
    res.render('Home')
 })
+
 app.get('/generator', (req, res) => {
    res.render("generator", {
       apiKey : process.env.OPENAI_API_KEY,
    })
 })
 
-app.get("/user/login", (req, res) => {
-   return res.render('login');
-})
 
 app.get("/loader", (req, res) => {
    const queryString  = req.query.q;
