@@ -29,11 +29,14 @@
                   required
                   class="instructions"
                   id="inputvalue"
+                  name = "query"
                 />
                 <input type="submit" value="Submit" class="submit-button" />
-                <button  class="button">Search</button
                 
             </form>
+            <div class="youtube">
+              <button  type="submit" class="button">Search</button
+            </div>
 
           <div class="hints">
             i.e. western cuisine, french pastries, japanese desserts
@@ -48,6 +51,8 @@
       <section>
         <div class="recipe hidden" id="recipe"></div>
       </section>
+      
+      
 
     </main>
 
@@ -55,11 +60,13 @@
 
     <script>
       const API_KEY = "<%= apiKey %>";
-      const YOUTUBE_APIKEY = "<%= youtube_apiKey %>";
+
+      
     </script>
     
     
     <!-- Recipe generation -->
     <script defer src="/javascripts/script.js"></script>
+    <!-- <script src="/javascripts/youtube.js"></script> -->
   </body>
 </html>

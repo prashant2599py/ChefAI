@@ -108,6 +108,10 @@ body {
     animation: blink 1s linear infinite;
   }
   
+  h3{
+    color: black;
+  }
+  
   
   @keyframes blink {
     0% {

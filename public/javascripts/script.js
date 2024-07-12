@@ -22,42 +22,15 @@ function displayRecipe(response) {
   
     axios.get(apiUrl).then(displayRecipe);
   }
-  
+
   let recipeForm = document.querySelector("#recipe-form");
   recipeForm.addEventListener("submit", generateRecipe);
 
-  const videoSection = document.querySelector("section")
-  const loader = document.querySelector('.container');
 
-  let api;
-    document.querySelector('button').addEventListener('click', function(event){
-        event.preventDefault();
-        let youtube_api_key = YOUTUBE_APIKEY;
-        let youtube_uri = `https://youtube.googleapis.com/youtube/v3/search?key=${youtube_api_key}&type=video&part=snippet`
-       
-        console.log(youtube_uri);
-
-        let text = document.getElementById('inputvalue').value;
-        
-        api = `${youtube_uri}&q=${encodeURIComponent(text)}`;
-        console.log(api);
-
-        loader.style.display = "block";
-
-        setTimeout(getVideos, 3000)
-    })
-
-    function getVideos(){
-        fetch(api)
-        .then((response) => {
-          return response.json()
-
-        }).then((data) => {
-          console.log(data);
-          console.log("data fetched");
-            loader.style.display = "none";       
-        }).catch((error) => {
-            loader.style.display = "none";
-            videoSection.innerHTML = '<h3>Sorry Something went wrong!</h3>'
-        })
-    }
+  // Redirecting as query parameters;
+  document.querySelector("button").addEventListener('click', function(event){
+    event.preventDefault();
+    const query = document.getElementById("inputvalue").value;
+    const link = `/api/videos/?q=${encodeURIComponent(query)}`;
+    window.redirect(link)
+  })
