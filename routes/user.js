@@ -15,8 +15,6 @@ router.post('/signup', async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const  password = req.body.password
-
-    
     
     try{
        const userExists = await User.findOne({ email });
@@ -37,18 +35,13 @@ router.post('/signup', async (req, res) => {
         // Generate JWT token
         const token = jwt.sign({ id : newUser._id}, JWT_SECRET , {expiresIn : '1h'})
 
-        res.status(201).json({
-            message : "User created Successfully!",
-            token : token
-        })    
+        res.redirect('/generator') ;   
     }catch(error){
         res.status(500).json({
             message : "Something wrong with your Credentials. Use different ID"
         })
     }
-        
-
-    
+           
 })
 
 router.post("/signin", async (req, res) => {
@@ -66,10 +59,7 @@ router.post("/signin", async (req, res) => {
             
             const token = jwt.sign({email : email}, JWT_SECRET, {expiresIn:'1h'})
 
-            res.json({
-                message : "Signed in successfully",
-                token: token
-            })
+            res.redirect('/generator');
             // console.log("jwt token created successfully")
         }else{
             res.status(403).json({
@@ -78,16 +68,12 @@ router.post("/signin", async (req, res) => {
         }
 
     }catch(err){
-        // console.log(err);
+        
         res.status(411).json({
             message : "User already with this email id"
         })
     }
 })
-
-// router.post("/signup" ,(req, res) => {
-//     res.send(`Your username : ${req.body.username} and your email is : ${req.body.email}`); 
-// })
 
 
 module.exports = router;

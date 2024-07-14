@@ -27,11 +27,10 @@ app.get('/generator', (req, res) => {
 })
 
 
-app.get("/loader", (req, res) => {
+app.get("/utube", (req, res) => {
    const queryString  = req.query.q;
    const decodedString = decodeURIComponent(queryString);
-   console.log(decodedString);
-   res.render('loader',{
+   res.render('utube',{
       youtube_apiKey : process.env.YOUTUBE_API_KEY,
       textData : decodedString
    });

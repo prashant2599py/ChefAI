@@ -1,0 +1,28 @@
+body{
+  background-color: black;
+}
+h1 {
+  color: white;
+  text-align: center;
+}
+
+h3{
+  color: white;
+  margin: 2px 10px
+}
+
+.video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 10px; /* Adjust the gap between videos */
+  }
+  
+  .video-item {
+    flex: 1 0 calc(25% - 10px); /* 4 items per row (25% width) with gap */
+    max-width: calc(25% - 10px);
+    margin-bottom: 10px; /* Adjust spacing as needed */
+  }
+  
+  .video-item img {
+    width: 100%; /* Ensure videos fill their container */
+  }
