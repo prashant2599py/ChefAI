@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const jwt = require("jsonwebtoken");
+
 require('dotenv').config();
 const  JWT_SECRET  = process.env.JWT_SECRET;
 const { User } = require("../db")
@@ -9,11 +10,12 @@ router.get("/login", (req, res) => {
     res.render("login");
 })
 
-router.post("/signup", async (req, res) => {
+router.post('/signup', async (req, res) => {
+    
+    const username = req.body.username;
+    const email = req.body.email;
+    const  password = req.body.password
 
-    const username = req.body.username,
-    email = req.body.email,
-    password = req.body.password
     
     
     try{
@@ -50,15 +52,19 @@ router.post("/signup", async (req, res) => {
 })
 
 router.post("/signin", async (req, res) => {
+
+    const email = req.body.email;
+    const password = req.body.password
+
     const userExists = await User.findOne({
-        email : req.body.email,
-        password : req.body.password
+        email :  email,
+        password : password
     })
     try{
         
         if(userExists){
             
-            const token = jwt.sign({email : req.body.email}, JWT_SECRET, {expiresIn:'1h'})
+            const token = jwt.sign({email : email}, JWT_SECRET, {expiresIn:'1h'})
 
             res.json({
                 message : "Signed in successfully",
@@ -79,9 +85,9 @@ router.post("/signin", async (req, res) => {
     }
 })
 
-router.post("/signup" ,(req, res) => {
-    res.send(`Your username : ${req.body.username} and your email is : ${req.body.email}`); 
-})
+// router.post("/signup" ,(req, res) => {
+//     res.send(`Your username : ${req.body.username} and your email is : ${req.body.email}`); 
+// })
 
 
 module.exports = router;

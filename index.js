@@ -2,19 +2,19 @@ const express = require('express')
 const app = express();
 const path = require("path");
 let cors = require('cors');
-const bodyParser = require('body-parser');
 const userRouter = require('./routes/user')
 // const staticRoute  = require('./routes/staticRouter');
 
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));  // For accepting form data
+ // For accepting form data
 app.set('view engine', 'ejs');
 app.set('views', path.resolve("./views"));
 app.use(express.static('./public'));
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true})); 
 app.use("/", userRouter)
-// app.use("/", staticRoute);
 
 app.get('/', function(req, res){
    res.render('Home')
@@ -37,22 +37,6 @@ app.get("/loader", (req, res) => {
    });
 })
 
-
-// app.get("/loader/:query", (req, res) => {
-//    const data = req.params.query;
-//    console.log(data);
-//     return res.render('loader', {
-//       youtube_apiKey : process.env.YOUTUBE_API_KEY,
-//       // queryData : data
-//      });
-//  })
-
-// app.get("/loader/", (req, res) => {
-//     res.render('loader', {
-//       youtube_apiKey : process.env.YOUTUBE_API_KEY,
-//       textData : req.query
-//     });
-//  })
 
 
 
