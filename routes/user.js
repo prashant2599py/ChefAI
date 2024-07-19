@@ -18,7 +18,6 @@ router.post('/signup', async (req, res) => {
     
     try{
        const userExists = await User.findOne({ email });
-        
        if(userExists){
             res.status(400).json({
                 message : "User already exists with this email address"
@@ -31,7 +30,7 @@ router.post('/signup', async (req, res) => {
             email : email,
             password : password
         })
-        
+
         // Generate JWT token
         const token = jwt.sign({ id : newUser._id}, JWT_SECRET , {expiresIn : '1h'})
 
@@ -49,17 +48,12 @@ router.post("/signin", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password
 
-    const userExists = await User.findOne({
-        email :  email,
-        password : password
-    })
+    const userExists = await User.matchPassword(email, password);
     try{
         
         if(userExists){
-            
-            const token = jwt.sign({email : email}, JWT_SECRET, {expiresIn:'1h'})
-
-            res.redirect('/generator');
+            // const token = jwt.sign({email : email}, JWT_SECRET, {expiresIn:'1h'})
+            return res.redirect('/generator');
             // console.log("jwt token created successfully")
         }else{
             res.status(403).json({
@@ -67,8 +61,8 @@ router.post("/signin", async (req, res) => {
             })
         }
 
-    }catch(err){
-        
+    }catch(err){    
+        console.log(err);   
         res.status(411).json({
             message : "User already with this email id"
         })

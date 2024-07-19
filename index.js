@@ -14,7 +14,7 @@ app.use(express.static('./public'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
-app.use("/", userRouter)
+app.use("/user", userRouter)
 
 app.get('/', function(req, res){
    res.render('Home')
@@ -36,6 +36,9 @@ app.get("/utube", (req, res) => {
    });
 })
 
+app.get("/blogs", (req, res) => {
+   res.render("blogs");
+})
 
 
 
