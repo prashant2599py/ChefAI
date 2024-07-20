@@ -2,9 +2,6 @@ const { Router } = require("express");
 const router = Router();
 const { User } = require("../db")
 
-router.get("/login", (req, res) => {
-    res.render("login");
-})
 
 router.post('/signup', async (req, res) => {
     
@@ -47,7 +44,7 @@ router.post("/signin", async (req, res) => {
         return res.cookie("token", token).redirect('/generator');
         
     }catch(err){ 
-        return res.render('login', {
+        return res.render('signin', {
             error: "Incorrect email or password"
         });   
         

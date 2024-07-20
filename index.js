@@ -20,6 +20,13 @@ app.get('/', function(req, res){
    res.render('Home')
 })
 
+app.get('/user/signup', (req, res)=> {
+   res.render('signup')
+})
+app.get('/user/signin', (req, res)=> {
+   res.render('signin')
+})
+
 app.get('/generator', (req, res) => {
    res.render("generator", {
       apiKey : process.env.OPENAI_API_KEY,

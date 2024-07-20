@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register page</title>
+
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <div class="outer-container">
+
+      <div class="left-container">
+        <%- include('./partials/errors') %>
+          
+        <div class="heading-container mt-4 mx-4">
+            <h3>Create an Account</h3>
+            <h6>Already have an account <a href="/user/signin" class="text-muted">Signin</a></h6>
+        </div>
+
+        <div class="form-container">
+          <form action="/user/signup" method="post">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+                <label for="floatingInput">Username</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <div class="button">
+                <button type="submit" class="btn btn-secondary" id="signUp">Signup</button>
+              </div>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="right-container">
+        <div class="thought">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, fugiat?
+        </div>   
+      </div>
+    </div>
+    <%- include('./partials/scripts') %>
+</body>
+<script src="/javascripts/login.js" />
+</html>
