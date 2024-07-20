@@ -7,11 +7,12 @@
 
     <link rel="stylesheet" href="/stylesheets/login.css">
 
-    
+    <%- include('./partials/head') %>
     
 </head>
 <body>
-    <div class="container right-panel-active">
+    
+    <div class="container right-panel-active"> 
         <!-- Sign Up -->
         <div class="container__form container--signup">
             <form action="/user/signup" method="POST" class="form" name="signup-form" id="form1" >
@@ -33,7 +34,7 @@
                 <button class="btn" type="submit">Sign In</button>
             </form>
         </div>
-    
+        
         <!-- Overlay -->
         <div class="container__overlay">
             <div class="overlay">
@@ -46,6 +47,7 @@
             </div>
         </div>
     </div>
+    <%- include('./partials/scripts') %>
 </body>
 <script src="/javascripts/login.js"></script>
 </html>

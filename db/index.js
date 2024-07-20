@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema , model } = require('mongoose');
 const { createHmac, randomBytes } = require('crypto');
+const { createTokenForUser } = require("../services/authentication");
+require('dotenv').config();
 
-mongoose.connect("mongodb+srv://admin:Wxl133K0RgiqVqD6@cluster0.clxjzil.mongodb.net/Recipe")
+const URL = process.env.DATABASE_URL;
+
+mongoose.connect(URL)
 .then((e)=> console.log("mongoose connected"));
 
 const userSchema = new Schema({
@@ -53,7 +57,7 @@ userSchema.pre("save", function(next){
     next();
 })
 
-userSchema.static("matchPassword",async function(email, password){
+userSchema.static("matchPasswordAndGenerateToken",async function(email, password){
     const user = await this.findOne({ email });
     if(!user) throw new Error("User not found");
 
@@ -67,7 +71,8 @@ userSchema.static("matchPassword",async function(email, password){
     if(hashedPassword !== userProvidedPassword) 
         throw new Error("Incorrect Password")
     
-    return {...user, salt: undefined, password: undefined} 
+    const token = createTokenForUser(user);
+    return token;
 })
 
 

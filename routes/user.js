@@ -1,9 +1,5 @@
 const { Router } = require("express");
 const router = Router();
-const jwt = require("jsonwebtoken");
-
-require('dotenv').config();
-const  JWT_SECRET  = process.env.JWT_SECRET;
 const { User } = require("../db")
 
 router.get("/login", (req, res) => {
@@ -25,14 +21,11 @@ router.post('/signup', async (req, res) => {
             return;
         }
 
-        const newUser = await User.create({
+        await User.create({
             username : username,
             email : email,
             password : password
         })
-
-        // Generate JWT token
-        const token = jwt.sign({ id : newUser._id}, JWT_SECRET , {expiresIn : '1h'})
 
         res.redirect('/generator') ;   
     }catch(error){
@@ -48,24 +41,16 @@ router.post("/signin", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password
 
-    const userExists = await User.matchPassword(email, password);
     try{
+        const token = await User.matchPasswordAndGenerateToken(email, password);
+        console.log(token);
+        return res.cookie("token", token).redirect('/generator');
         
-        if(userExists){
-            // const token = jwt.sign({email : email}, JWT_SECRET, {expiresIn:'1h'})
-            return res.redirect('/generator');
-            // console.log("jwt token created successfully")
-        }else{
-            res.status(403).json({
-                message : "Email or password is not correct"
-            })
-        }
-
-    }catch(err){    
-        console.log(err);   
-        res.status(411).json({
-            message : "User already with this email id"
-        })
+    }catch(err){ 
+        return res.render('login', {
+            error: "Incorrect email or password"
+        });   
+        
     }
 })
 
