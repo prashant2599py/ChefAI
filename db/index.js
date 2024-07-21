@@ -6,8 +6,7 @@ require('dotenv').config();
 
 const URL = process.env.DATABASE_URL;
 
-mongoose.connect(URL)
-.then((e)=> console.log("mongoose connected"));
+mongoose.connect(URL);
 
 const userSchema = new Schema({
     username : {

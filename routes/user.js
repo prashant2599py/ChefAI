@@ -40,7 +40,7 @@ router.post("/signin", async (req, res) => {
 
     try{
         const token = await User.matchPasswordAndGenerateToken(email, password);
-        console.log(token);
+        // console.log(token);
         return res.cookie("token", token).redirect('/generator');
         
     }catch(err){ 
@@ -49,6 +49,11 @@ router.post("/signin", async (req, res) => {
         });   
         
     }
+})
+
+
+router.get("/logout", (req, res) => {
+    res.clearCookie("token").redirect("/blogs")
 })
 
 

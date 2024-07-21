@@ -1,22 +1,23 @@
-const { User } = require("../db")
+const { validateToken } = require('../services/authentication');
+function checkForAuthenticationCookie(cookieName){
 
-async function userMiddleware(req, res, next){
+    return (req, res, next) => {
+        const tokenCookieValue = req.cookies[cookieName];
 
-    const username = req.headers.username;
-    const password = req.headers.password;
-
-    User.findOne({
-        username : username,
-        password : password
-    }).then((data) =>{
-        if(data){
-            next();
-        }else{
-            res.status(403).json({
-                message : "User doesn't exist!"
-            })
+        if(!tokenCookieValue){
+            return next();
         }
-    })
-  
+
+        try{
+            const userPayload = validateToken(tokenCookieValue);
+            req.user = userPayload;
+        }catch(err){
+           return next();
+        }
+    }
 }
-module.exports = userMiddleware;
+
+
+module.exports ={
+    checkForAuthenticationCookie,
+}

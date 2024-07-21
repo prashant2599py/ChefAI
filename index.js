@@ -3,7 +3,8 @@ const app = express();
 const path = require("path");
 let cors = require('cors');
 const userRouter = require('./routes/user')
-// const staticRoute  = require('./routes/staticRouter');
+const cookieParser = require('cookie-parser');
+const { checkForAuthenticationCookie } = require('./middlewares/user');
 
 
  // For accepting form data
@@ -15,6 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
 app.use("/user", userRouter)
+app.use(cookieParser());
+app.use(checkForAuthenticationCookie("token"));
 
 app.get('/', function(req, res){
    res.render('Home')
@@ -44,12 +47,14 @@ app.get("/utube", (req, res) => {
 })
 
 app.get("/blogs", (req, res) => {
-   res.render("blogs");
+   res.render("blogs" , {
+      user: req.user,
+   });
 })
 
 
 
-const PORT = 3000;
+const PORT = 3001;
 
 app.listen(PORT, () => {
     console.log(`Server is listening at ${PORT}`);
