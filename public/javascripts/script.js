@@ -28,10 +28,15 @@ function displayRecipe(response) {
 
 
   // Redirecting as query parameters;
-  document.querySelector("button").addEventListener('click', function(event){
+  document.getElementById("utubeBTN").addEventListener('click', function(event){
     event.preventDefault();
     const query = document.getElementById("inputvalue").value;
     const link1 = `/utube/?q=${encodeURIComponent(query)}`;
     // const link = `/loader/`
     window.location.href = link1;
+  })
+
+
+  document.getElementById("btn-primary").addEventListener('click', (e)=> {
+       window.location.href= "/"
   })

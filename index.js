@@ -3,8 +3,9 @@ const app = express();
 const path = require("path");
 let cors = require('cors');
 const userRouter = require('./routes/user')
+const blogRouter = require('./routes/blogs')
 const cookieParser = require('cookie-parser');
-const { checkForAuthenticationCookie } = require('./middlewares/user');
+const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/user');
 
 
  // For accepting form data
@@ -15,9 +16,12 @@ app.use(express.static('./public'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
-app.use("/user", userRouter)
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
+app.use(setUserLocals)
+app.use("/user", userRouter);
+app.use("/blog", blogRouter);
+
 
 app.get('/', function(req, res){
    res.render('Home')
@@ -46,16 +50,18 @@ app.get("/utube", (req, res) => {
    });
 })
 
-app.get("/blogs", (req, res) => {
-   res.render("blogs" , {
-      user: req.user,
-   });
+app.get("/user/blogs", checkForAuthenticationCookie("token"), (req, res) => {
+   // console.log(req)
+   res.locals.user = req.user;
+   res.render("blogs" )
 })
 
+app.get("/user/logout", (req, res) => {
+   res.clearCookie("token").redirect("/user/blogs")
+})
 
-
-const PORT = 3001;
+const PORT = 8001;
 
 app.listen(PORT, () => {
-    console.log(`Server is listening at ${PORT}`);
+    console.log(`Server is listening at port:${PORT}`);
 })

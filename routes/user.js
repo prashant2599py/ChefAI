@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { User } = require("../db")
+const { User } = require("../models/user");
 
 
 router.post('/signup', async (req, res) => {
@@ -23,8 +23,8 @@ router.post('/signup', async (req, res) => {
             email : email,
             password : password
         })
-
-        res.redirect('/generator') ;   
+        res.status(200).redirect('/generator');
+        // res.redirect('/generator') ;   
     }catch(error){
         res.status(500).json({
             message : "Something wrong with your Credentials. Use different ID"
@@ -38,13 +38,18 @@ router.post("/signin", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password
 
-    try{
-        const token = await User.matchPasswordAndGenerateToken(email, password);
-        // console.log(token);
-        return res.cookie("token", token).redirect('/generator');
+    try{      
+       const token = await User.matchPasswordAndGenerateToken(email, password);
+       res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Set secure flag if in production
+            sameSite: 'Strict',
+            maxAge: 24 * 60 * 60 * 1000 // 1 day
+       });
+       return res.redirect('/generator');
         
     }catch(err){ 
-        return res.render('signin', {
+        res.render('signin', {
             error: "Incorrect email or password"
         });   
         
@@ -52,9 +57,6 @@ router.post("/signin", async (req, res) => {
 })
 
 
-router.get("/logout", (req, res) => {
-    res.clearCookie("token").redirect("/blogs")
-})
 
 
 module.exports = router;

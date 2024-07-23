@@ -5,7 +5,7 @@ signUpBtn.addEventListener('click', (e) =>{
 
 });
 signInBtn.addEventListener('click', (e) =>{
-
+console.log("Signin data sent")
 });
 
 

@@ -9,6 +9,15 @@ body {
     display: flex;
     flex-direction: column;
   }
+  #btn-primary{
+    width: 180px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #508f8b;
+    border-radius: 8px;
+    border: none;
+  }
   
   h1 {
     text-align: center;
