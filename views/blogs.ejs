@@ -8,16 +8,14 @@
 </head>
 <body>
    <%- include('./partials/nav') %>
+
     <div class="container mt-3">
-        <% blogs.forEach(blog => { %>
-            <div class="card" style="width: 18rem;">
-                <img src="<%= blog.coverImageURL %>" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title"><%= blog.title %></h5>
-                    <a href="/user/blog/<%= blog._id %>" class="btn btn-primary">Read More</a>
-                </div>
+        <form>
+            <div class="mb-3">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
             </div>
-        <% }) %>
+        </form>
     </div>
     <%- include('./partials/scripts') %>
 </body>
