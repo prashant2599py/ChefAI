@@ -11,7 +11,7 @@ const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/u
  // For accepting form data
 app.set('view engine', 'ejs');
 app.set('views', path.resolve("./views"));
-app.use(express.static('./public'));
+app.use(express.static(path.resolve('./public')));
 
 app.use(cors());
 app.use(express.json());
@@ -27,12 +27,12 @@ app.get('/', function(req, res){
    res.render('Home')
 })
 
-app.get('/user/signup', (req, res)=> {
-   res.render('signup')
-})
-app.get('/user/signin', (req, res)=> {
-   res.render('signin')
-})
+// app.get('/user/signup', (req, res)=> {
+//    res.render('signup')
+// })
+// app.get('/user/signin', (req, res)=> {
+//    res.render('signin')
+// })
 
 app.get('/generator', (req, res) => {
    res.render("generator", {
@@ -50,11 +50,11 @@ app.get("/utube", (req, res) => {
    });
 })
 
-app.get("/user/blogs", checkForAuthenticationCookie("token"), (req, res) => {
-   // console.log(req)
-   res.locals.user = req.user;
-   res.render("blogs" )
-})
+// app.get("/user/blogs", checkForAuthenticationCookie("token"), (req, res) => {
+//    // console.log(req)
+//    res.locals.user = req.user;
+//    res.render("blogs" )
+// })
 
 app.get("/user/logout", (req, res) => {
    res.clearCookie("token").redirect("/user/blogs")

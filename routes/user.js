@@ -1,8 +1,16 @@
 const { Router } = require("express");
 const router = Router();
 const { User } = require("../models/user");
+const { checkForAuthenticationCookie } = require("../middlewares/user");
 
+const Blog = require("../models/blogs")
 
+router.get('/signup', (req, res)=> {
+    res.render('signup')
+ })
+ router.get('/signin', (req, res)=> {
+    res.render('signin')
+ })
 router.post('/signup', async (req, res) => {
     
     const username = req.body.username;
@@ -55,6 +63,16 @@ router.post("/signin", async (req, res) => {
         
     }
 })
+
+router.get("/blogs", checkForAuthenticationCookie("token"), async (req, res) => {
+    // console.log(req)
+    const allBlogs = await Blog.find({})
+    res.locals.user = req.user;
+    res.render("blogs", {
+        user: req.user, 
+        blogs: allBlogs
+    } )
+ })
 
 
 
