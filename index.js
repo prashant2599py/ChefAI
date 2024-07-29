@@ -7,18 +7,27 @@ const blogRouter = require('./routes/blogs')
 const cookieParser = require('cookie-parser');
 const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/user');
 
+app.use(cors({
+   origin: process.env.CORS_ORIGIN,
+   credentials:true,
+}));
 
- // For accepting form data
-app.set('view engine', 'ejs');
-app.set('views', path.resolve("./views"));
-app.use(express.static(path.resolve('./public')));
-
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 app.use(setUserLocals)
+ // For accepting form data
+app.set('view engine', 'ejs');
+app.set('views', path.resolve("./views"));
+app.use(express.static(path.resolve('./public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve uploaded files
+
+app.use((err, req, res, next) => {
+   console.error(err.stack);
+   res.status(500).send('Something broke!');
+ });
+
 app.use("/user", userRouter);
 app.use("/blog", blogRouter);
 
@@ -26,13 +35,6 @@ app.use("/blog", blogRouter);
 app.get('/', function(req, res){
    res.render('Home')
 })
-
-// app.get('/user/signup', (req, res)=> {
-//    res.render('signup')
-// })
-// app.get('/user/signin', (req, res)=> {
-//    res.render('signin')
-// })
 
 app.get('/generator', (req, res) => {
    res.render("generator", {
@@ -50,17 +52,12 @@ app.get("/utube", (req, res) => {
    });
 })
 
-// app.get("/user/blogs", checkForAuthenticationCookie("token"), (req, res) => {
-//    // console.log(req)
-//    res.locals.user = req.user;
-//    res.render("blogs" )
-// })
 
 app.get("/user/logout", (req, res) => {
    res.clearCookie("token").redirect("/user/blogs")
 })
 
-const PORT = 8001;
+const PORT = 8002;
 
 app.listen(PORT, () => {
     console.log(`Server is listening at port:${PORT}`);

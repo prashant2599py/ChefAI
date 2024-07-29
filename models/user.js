@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema , model } = require('mongoose');
 const { createHmac, randomBytes } = require('crypto');
 const { createTokenForUser } = require("../services/authentication");
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     },
     profileImageURL : {
         type: String,
-        default: "/image/defualt.png"
+        default: "/images/default.png"
 
     },
     role: {
