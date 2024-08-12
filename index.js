@@ -6,6 +6,7 @@ const userRouter = require('./routes/user')
 const blogRouter = require('./routes/blogs')
 const cookieParser = require('cookie-parser');
 const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/user');
+const Contact = require('./models/contact');
 
 app.use(cors({
    origin: process.env.CORS_ORIGIN,
@@ -53,8 +54,28 @@ app.get("/utube", (req, res) => {
 })
 
 
-app.get("/user/logout", (req, res) => {
-   res.clearCookie("token").redirect("/user/blogs")
+app.get('/about', (req, res) => {
+   res.render('About');
+})
+app.get('/contact', (req, res) => {
+   res.render('Contact');
+})
+
+
+app.post('/contact', async (req, res) => {
+   const fullName = req.body.fullName;
+   const email = req.body.email;
+   const phone = req.body.phone;
+   const message = req.body.message;
+
+   await Contact.create({
+      fullName,
+      email,
+      phone,
+      message,
+   })
+   res.status(200).render('Contact');
+
 })
 
 const PORT = 8002;

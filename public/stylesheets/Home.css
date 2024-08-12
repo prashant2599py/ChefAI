@@ -3,12 +3,12 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #747373;
+    background-color: white;
    
 }
 header {
-    background-color: #474444;
-    padding: 15px 0;
+    background-color: whitesmoke;
+    padding: 4px 0;
     text-align: center;
 }
 .heading{
@@ -29,36 +29,32 @@ header {
 
 
 .subHeading{
-    font-size: 20px;
+    font-size: 30px;
 }
 nav {
     height: 35px;
-    background-color: #4caf50;
-    padding: 10px;
+    background-color: whitesmoke;
+    padding:5px;
     display: flex;
     justify-content: center;
     
 }
 nav a {
-    color: #fff;
+    color: rgb(149, 149, 227);
     text-decoration: none;
     padding: 10px;
     margin: 0 10px;
+    font-size: larger;
 }
 nav a:hover{
-    color:black;
-    font-size: 1.15rem;
+    color: rgb(57, 57, 119);
+    font-size: 1.20rem;
     font-weight: bold;
 }
-/* section {
-    padding: 20px;
-    margin: 20px 0;
-} */
 
 .container{
     height: 650px;
     position: relative;
-    /* height: 100%; */
     background-image: url("../images/background-image.jpg");
     background-position: center;
     background-size: cover;
@@ -67,11 +63,8 @@ nav a:hover{
 }
 
 .innerContainer {   
-    display: flex;
-    /* flex-wrap: wrap; */
-   
-    font-weight: bold;
-    
+    display: flex;   
+    font-weight: bold;  
 }
   .innerContainer .left{
     background-color: rgba(147, 145, 145, 0.5);  
