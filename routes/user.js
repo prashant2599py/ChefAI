@@ -8,7 +8,10 @@ const Blog = require("../models/blogs")
 router.get('/signup', (req, res)=> {
     res.render('signup')
  })
- router.get('/signin', (req, res)=> {
+ router.get('/signin', checkForAuthenticationCookie("token"), (req, res)=> {
+    if(req.user){
+       return res.redirect('/generator');
+    }
     res.render('signin')
  })
 
@@ -45,6 +48,7 @@ router.post('/signup', async (req, res) => {
 
 router.post("/signin", async (req, res) => {
 
+    
     const email = req.body.email;
     const password = req.body.password
 

@@ -74,7 +74,9 @@ app.post('/contact', async (req, res) => {
       phone,
       message,
    })
-   res.status(200).render('Contact');
+   res.status(200).render('Contact', {
+      message :"Data sent successfully"
+   });
 
 })
 

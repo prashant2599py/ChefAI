@@ -13,10 +13,14 @@
         <div class="row row-cols-4">
             <% blogs.forEach(blog => { %>
                 <div class="col">
-                    <div class="card col" style="width: 18rem; margin-bottom: 16px; margin-left: 12px;">
+                    <div class="card col" style="width: 18rem; margin-bottom: 16px; margin-left: 12px; border-radius: 14px;">
                         <img src="<%= blog.coverImageURL %>" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title"><%= blog.title %></h5>
+                            <div class="card-title" style="font-size: larger; font-weight: 700;"><%= blog.title %></div>
+                            <% 
+                                const truncatedBody = blog.body.length > 50 ? blog.body.substring(0, 100) : blog.body;
+                            %>
+                            <p class="truncated-body"><%= truncatedBody %></p>
                             <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
@@ -26,4 +30,5 @@
         </div>
     <%- include('./partials/scripts') %>
 </body>
+<script src="/javascripts/blogNav.js"></script>
 </html>

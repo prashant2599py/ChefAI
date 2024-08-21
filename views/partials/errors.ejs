@@ -3,3 +3,9 @@
       <%= locals.error %> 
     </div>
   <% } %>
+
+<% if (locals.message) { %>
+  <div class="alert alert-success" role="alert">
+    <%= locals.message %>
+  </div>
+<% } %>

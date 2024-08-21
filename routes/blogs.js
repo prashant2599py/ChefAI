@@ -46,7 +46,7 @@ router.get('/:id', async (req, res) => {
 const uploadMiddleware = upload.single('coverImage'); // Adjust 'coverImage' as necessary
 router.post("/All", async (req, res) => {
   const { title, body } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   const blog = await Blog.create({
     body,
     title,
