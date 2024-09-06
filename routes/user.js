@@ -60,6 +60,7 @@ router.post("/signin", async (req, res) => {
             sameSite: 'Strict',
             maxAge: 24 * 60 * 60 * 1000 // 1 day
        });
+       
        return res.redirect('/generator');
         
     }catch(err){ 

@@ -16,7 +16,7 @@
              
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= user.email %>
+                <%= user.email  %>
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/user/logout">Logout</a></li>  
@@ -24,10 +24,10 @@
             </li>
           <% } else{ %>
             <li class="nav-item">
-              <a class="nav-link" href="/user/signup">Create Account</a>
+              <a class="nav-link" href="/blog/signup">Create Account</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/user/signin">Signin</a>
+              <a class="nav-link" href="/blog/signin">Signin</a>
             </li>
             <% }%>
           

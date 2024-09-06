@@ -19,8 +19,8 @@
             <h6>Don't have an account <a href="/user/signup" class="text-muted">Signup</a></h6>
         </div>
         <div class="form-container">
-            <form action="/user/signin" method="post">
-
+            <form id="authForm" method="post">
+                <input type="hidden" id="context" name="context" value="aiSearch">
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
                     <label for="floatingInput">Email address</label>
@@ -44,4 +44,13 @@
     <%- include('./partials/scripts') %>
 </body>
 <!-- <script src="/javascripts/login.js" /> -->
+ <script>
+        const authForm = document.getElementById('authForm');
+        const context = document.getElementById('context');
+        if(context === 'aiSearch'){
+          form.action = '/user/signin';
+        }else{
+          form.action = '/blog/signin';
+        }
+ </script>
 </html>

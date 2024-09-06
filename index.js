@@ -7,6 +7,7 @@ const blogRouter = require('./routes/blogs')
 const cookieParser = require('cookie-parser');
 const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/user');
 const Contact = require('./models/contact');
+const Blogs = require('./models/blogs');
 
 app.use(cors({
    origin: process.env.CORS_ORIGIN,
@@ -42,7 +43,14 @@ app.get('/generator', (req, res) => {
       apiKey : process.env.OPENAI_API_KEY,
    })
 })
-
+app.get('/AllBlogs', async (req, res) => {
+   const allBlogs = await Blogs.find({})
+    res.locals.user = req.user;
+    res.render("AllBlogs", {
+        user: req.user, 
+        blogs: allBlogs
+    })
+})
 
 app.get("/utube", (req, res) => {
    const queryString  = req.query.q;

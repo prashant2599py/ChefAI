@@ -20,7 +20,8 @@
         </div>
 
         <div class="form-container">
-          <form action="/user/signup" method="post">
+          <form id="authForm" method="post">
+            <input type="hidden" id="context" name="context" value="aiSearch">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
                 <label for="floatingInput">Username</label>
