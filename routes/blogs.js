@@ -104,15 +104,13 @@ router.post("/All", async (req, res)=> {
 })
 
 router.post('/signup', async (req, res) => {
-    const username = req.body.username;
-    const email = req.body.email;;
-    const password = req.body.password;
+    const { username, email, password} = req.body;
 
     try{
       const alreadyExist = await User.findOne({email});
       if(alreadyExist){
-        res.status(400).json({
-          message : " User already exists",
+        res.render('signup', {
+          error : "User already exists with this email"
         })
       }
       await User.create({

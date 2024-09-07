@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/user');
 const Contact = require('./models/contact');
 const Blogs = require('./models/blogs');
+const User = require('./models/user');
 
 app.use(cors({
    origin: process.env.CORS_ORIGIN,
@@ -44,12 +45,20 @@ app.get('/generator', (req, res) => {
    })
 })
 app.get('/AllBlogs', async (req, res) => {
-   const allBlogs = await Blogs.find({})
-    res.locals.user = req.user;
-    res.render("AllBlogs", {
-        user: req.user, 
-        blogs: allBlogs
-    })
+   try{
+      const allBlogs = await Blogs.find({})
+      res.locals.user = req.user; 
+      console.log(res.locals.user);
+       res.render("AllBlogs", {
+          user :req.user,
+          blogs: allBlogs
+         })
+      
+   }catch(error){
+      res.status(500).json({
+         message : "Unable to fetch Blogs"
+      })
+   }
 })
 
 app.get("/utube", (req, res) => {

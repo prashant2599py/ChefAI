@@ -5,10 +5,10 @@
     <title>Blogs</title>
 
     <!-- <link rel="stylesheet" href="/stylesheets/blogs.css"> -->
-</head>
+</head> 
 <body>
    <%- include('./partials/nav') %>
-    <%= JSON.stringify(locals)%>   
+    <%= JSON.stringify(user)%>   
     <div class="container mt-3 mb-6">
         <div class="row row-cols-4">
             <% blogs.forEach(blog => { %>
