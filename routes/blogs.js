@@ -113,11 +113,16 @@ router.post('/signup', async (req, res) => {
           error : "User already exists with this email"
         })
       }
-      await User.create({
+      const newUser = await User.create({
         username : username,
         email : email,
         password : password
       })
+      req.session.user = {
+        id : newUser._id,
+        username : newUser.username,
+        email : newUser.email
+      }
       res.status(200).redirect('/AllBlogs')
 
     }catch(err){

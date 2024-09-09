@@ -9,6 +9,14 @@ const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/u
 const Contact = require('./models/contact');
 const Blogs = require('./models/blogs');
 const User = require('./models/user');
+const session = require('express-session');
+
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set secure to true if you're using HTTPS
+}));
 
 app.use(cors({
    origin: process.env.CORS_ORIGIN,
@@ -47,10 +55,12 @@ app.get('/generator', (req, res) => {
 app.get('/AllBlogs', async (req, res) => {
    try{
       const allBlogs = await Blogs.find({})
-      res.locals.user = req.user; 
-      console.log(res.locals.user);
+      const user = req.session.user;
+
+      res.locals.user = user; 
+      // console.log(user);
        res.render("AllBlogs", {
-          user :req.user,
+          user : user,
           blogs: allBlogs
          })
       
