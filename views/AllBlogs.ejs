@@ -6,17 +6,17 @@
 
     <!-- <link rel="stylesheet" href="/stylesheets/blogs.css"> -->
 </head> 
-<body>
+<body style="background-color: black;">
    <%- include('./partials/nav') %>
-    <%= JSON.stringify(user)%>   
-    <div class="container mt-3 mb-6">
-        <div class="row row-cols-4">
+    <!-- <%= JSON.stringify(locals)%>    -->
+    <div class="container mt-3 mb-6" >
+        <div class="row row-cols-4" >
             <% blogs.forEach(blog => { %>
-                <div class="col">
-                    <div class="card col" style="width: 18rem; margin-bottom: 16px; margin-left: 12px; border-radius: 14px; height: 300px;">
-                        <img src="<%= blog.coverImageURL %>" class="card-img-top">
+                <div class="col" >
+                    <div class="card col" style="width: 18rem; margin-bottom: 16px; margin-left: 12px; border-radius: 14px; background-color: rgb(52, 51, 51); color: white;">
+                        <div style="width: 90%; height: 50%;"><img src="<%= blog.coverImageURL %>" class="card-img-top" style="margin-left: 12px;margin-top: 6px; border-radius: 8px;"></div>
                         <div class="card-body">
-                            <div class="card-title" style="font-size: larger; font-weight: 700;"><%= blog.title %></div>
+                            <div class="card-title" style="font-size: larger; font-weight: 700; "><%= blog.title %></div>
                             <% 
                                 const truncatedBody = blog.body.length > 50 ? blog.body.substring(0, 100) : blog.body;
                             %>

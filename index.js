@@ -58,7 +58,7 @@ app.get('/AllBlogs', async (req, res) => {
       const user = req.session.user;
 
       res.locals.user = user; 
-      // console.log(user);
+      console.log(user);
        res.render("AllBlogs", {
           user : user,
           blogs: allBlogs
@@ -107,7 +107,7 @@ app.post('/contact', async (req, res) => {
 
 })
 
-const PORT = 8002;
+const PORT = 8000;
 
 app.listen(PORT, () => {
     console.log(`Server is listening at port:${PORT}`);
