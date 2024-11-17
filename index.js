@@ -58,7 +58,6 @@ app.get('/AllBlogs', async (req, res) => {
       const user = req.session.user;
 
       res.locals.user = user; 
-      console.log(user);
        res.render("AllBlogs", {
           user : user,
           blogs: allBlogs

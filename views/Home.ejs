@@ -3,64 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Maker - Home</title>
+    <title>ChefAI</title>
     <link rel="stylesheet" href="/stylesheets/Home.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> 
+
+
 </head>
 <body>
-
     <header>
-        <h1 class="heading">AI-Recipe Maker</h1>
-        <p class="subHeading">Discover, Cook, Enjoy!</p>
+        <div>
+            <p>ChefAI</p>
+        </div>
+        <div class="nav-detail">
+            <a href="/user/signin">Search Recipes</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/user/blogs">Blogs</a>
+        </div>
     </header>
-    
-
-    <nav>
-        <a href="#">Home</a>
-        <a href="/user/signin">Search Recipes</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/user/blogs">Blogs</a>
-        
-    </nav>
-
     <div class="container">
-        <div class="innerContainer">
-            <section class="left">
-                <h2 class="heading1">AI-Based Recipe-Maker</h2>
-                <p class="subHeading">Explore our collection of mouth-watering recipes and cooking tips.</p>
-             </section>
-    
-            <section class="right">
-                <h2>Featured Recipes</h2>
-                <div class="recipe">
-                    <h3>Spaghetti Bolognese</h3>
-                    <p>A classic Italian dish with rich tomato sauce and ground beef served over pasta.</p>
-                </div>
-                <div class="recipe">
-                    <h3>Grilled Salmon</h3>
-                    <p>Healthy and flavorful grilled salmon with a lemon and herb marinade.</p>
-                </div>
-                <!-- Add more featured recipes as needed -->
-            </section>
+        <div class="heading1">
+           <p> Create Delicious Recipes with AI</p>
+        </div>
+        <div class="subheading1">
+            <p>Discover new culinary delights tailored to your preferences and dietary needs with our AI-powered recipe generator. </p>
+        </div>
+        <div class="front-input">
+            <input type="text" placeholder="Enter the recipe....">
+            <a href="/user/signin"><button type="submit" class="btn-sub">Generate Recipe</button></a>
         </div>
     </div>
-
-    <section>
-        <h2 class="heading2">Watch and Learn</h2>
-        <video controls>
-            <source src="sample_video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <section class="w-full py-12 md:py-24 lg:py-32 bg-muted">
+      <div class="container px-4 md:px-6">
+        <h2 class="features">Features</h2>
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="feature-card">
+            <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.82 122.88" style="enable-background:new 0 0 122.82 122.88" xml:space="preserve"><g><path d="M24.8,57.78c0-1.05,0.85-1.9,1.9-1.9c1.05,0,1.9,0.85,1.9,1.9v36.98c0,0.04,0,0.09,0,0.13c0.01,0.56,0.02,1.17,0.04,1.78 c0.11,5.13,0.22,10.27-0.58,15.48c-0.08,0.52-0.14,1.06-0.21,1.62c-0.38,3.33-0.85,7.39-4.01,8.91c-0.27,0.13-0.55,0.19-0.83,0.19 v0h-4.1c-0.17,0-0.33-0.02-0.48-0.06c-1.18-0.24-2.25-0.88-3.19-1.95c-0.83-0.95-1.56-2.25-2.19-3.94 c-0.06-0.17-0.1-0.35-0.11-0.53l0,0c-0.29-3.94-0.48-7.95-0.56-12.04c-0.08-4.01-0.04-8.04,0.13-12.06h0V50.79 c-3.91-1.33-6.83-3.61-8.89-6.87c-2.22-3.51-3.36-8.1-3.6-13.8l0-0.07c-0.13-4.39,0.2-8.32,1-11.78c0.83-3.56,2.14-6.64,3.95-9.24 c1.95-2.8,4.29-4.94,6.83-6.42c2.99-1.74,6.26-2.55,9.5-2.43c3.25,0.12,6.45,1.17,9.29,3.15c2.36,1.65,4.49,3.94,6.19,6.87 c2.36,4.05,3.83,10.21,3.96,16.54c0.1,4.67-0.53,9.46-2.06,13.6c-1.6,4.32-4.17,7.97-7.94,10.16c-2.23,1.3-4.85,2.06-7.91,2.12 c-1.05,0.02-1.91-0.81-1.93-1.86c-0.02-1.05,0.81-1.91,1.86-1.93c2.37-0.05,4.38-0.63,6.08-1.62c2.92-1.7,4.96-4.65,6.27-8.18 c1.37-3.7,1.93-8.01,1.84-12.22c-0.12-5.7-1.41-11.18-3.46-14.71c-1.41-2.42-3.15-4.3-5.08-5.65c-2.24-1.56-4.74-2.39-7.26-2.48 c-2.53-0.09-5.09,0.55-7.46,1.92c-2.06,1.2-3.99,2.97-5.61,5.3c-1.53,2.2-2.65,4.84-3.37,7.91C4,22.28,3.7,25.88,3.82,29.94l0,0.03 C4.03,35,4.99,38.97,6.84,41.9c1.75,2.77,4.37,4.64,7.98,5.62c0.86,0.18,1.5,0.95,1.5,1.86V92.3h-0.01c0,0.02,0,0.05,0,0.07 c-0.17,4.01-0.21,7.98-0.13,11.93c0.07,3.81,0.26,7.67,0.54,11.56c0.43,1.11,0.9,1.94,1.39,2.5c0.33,0.38,0.66,0.61,0.99,0.71h3.38 c1.03-0.89,1.34-3.53,1.59-5.73c0.07-0.64,0.14-1.24,0.22-1.75c0.76-4.97,0.65-9.91,0.55-14.84c-0.01-0.58-0.02-1.15-0.04-1.78 c-0.01-0.07-0.01-0.13-0.01-0.2V57.78L24.8,57.78z M108.22,73.11c-1.05,0-1.9-0.85-1.9-1.9c0-1.05,0.85-1.9,1.9-1.9h10.79V37.01 c-0.59-9.16-2.73-16.17-6.1-21.47c-2.78-4.37-6.44-7.6-10.78-9.92v106.05v0.03c0,0.63,0,1.34,0.02,1.83 c0.09,2.19,0.48,4.8,2.51,4.72c0.02,0,0.05,0,0.07,0v-0.01H109c2.14-0.3,2.09-2.89,2.05-5.15c-0.01-0.57-0.02-1.07-0.02-1.1v-32.2 c0-1.05,0.85-1.9,1.9-1.9c1.05,0,1.9,0.85,1.9,1.9v32.2c0,0.72,0,0.88,0.01,1.04c0.07,3.89,0.15,8.36-5.43,8.98 c-0.12,0.02-0.24,0.04-0.37,0.04h-4.3v-0.01c-5.27,0.17-6.22-4.47-6.38-8.37c-0.03-0.87-0.03-1.46-0.03-1.98v-0.03V2.6h0 c0-0.25,0.05-0.51,0.16-0.75c0.41-0.97,1.53-1.41,2.5-1c6.19,2.66,11.34,6.72,15.13,12.66c3.71,5.83,6.06,13.43,6.7,23.25 c0.01,0.08,0.02,0.16,0.02,0.25v34.2c0,1.05-0.85,1.9-1.9,1.9H108.22L108.22,73.11z M63.72,1.98c0-1.05,0.85-1.9,1.9-1.9 c1.05,0,1.9,0.85,1.9,1.9v32.16c0,1.05-0.85,1.9-1.9,1.9c-1.05,0-1.9-0.85-1.9-1.9V1.98L63.72,1.98z M71.75,1.98 c0-1.05,0.85-1.9,1.9-1.9c1.05,0,1.9,0.85,1.9,1.9v32.16c0,1.05-0.85,1.9-1.9,1.9c-1.05,0-1.9-0.85-1.9-1.9V1.98L71.75,1.98z M80.09,2c0-1.05,0.85-1.9,1.9-1.9c1.05,0,1.9,0.85,1.9,1.9v34.99c0,0.08-0.01,0.16-0.02,0.24c-0.29,4.9-1.44,8.64-3.43,11.24 c-2.16,2.82-5.2,4.27-9.11,4.38c-1.05,0.03-1.92-0.8-1.95-1.84c-0.03-1.05,0.8-1.92,1.84-1.95c2.7-0.08,4.77-1.04,6.19-2.9 c1.53-1.99,2.42-5.04,2.66-9.16l0-0.02V2L80.09,2z M55.61,1.9c0-1.05,0.85-1.9,1.9-1.9c1.05,0,1.9,0.85,1.9,1.9v34.99l0,0.04 c0.16,2.98,0.65,5.43,1.54,7.25c0.79,1.61,1.9,2.71,3.39,3.19c0.8,0.26,1.31,1.01,1.31,1.81h0v65.92c0,0.07,0,0.14-0.01,0.21 c-0.1,1.23,0.07,2.08,0.46,2.6c0.34,0.45,0.95,0.72,1.8,0.83h4.2c0.56-0.21,1-0.57,1.34-1.06c0.44-0.64,0.74-1.55,0.9-2.7V58.7 c0-1.05,0.85-1.9,1.9-1.9c1.05,0,1.9,0.85,1.9,1.9v56.4h0c0,0.08,0,0.15-0.01,0.23c-0.23,1.81-0.74,3.32-1.57,4.52 c-0.85,1.24-2,2.1-3.46,2.56c-0.23,0.09-0.47,0.15-0.73,0.15h-4.56v0c-0.07,0-0.14,0-0.21-0.01c-1.97-0.22-3.5-0.97-4.52-2.32 c-0.97-1.28-1.4-2.99-1.24-5.18V50.45c-1.88-0.95-3.3-2.5-4.32-4.6c-1.11-2.28-1.72-5.23-1.91-8.72c-0.01-0.08-0.02-0.16-0.02-0.24 V1.9L55.61,1.9z"/></g></svg>
+            <h3 class="text-xl font-bold">Personalized Recipes</h3>
+            <p class="text-muted-foreground text-center">Tailored to your dietary preferences and restrictions.</p>
+          </div>
+          <div class="feature-card">
+            <?xml version="1.0" ?><svg height="32" id="icon" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><defs><style>
+              .cls-1 {
+                fill: none;
+              }
+            </style></defs><rect height="2" width="10" x="11" y="24"/><rect height="2" width="6" x="13" y="28"/><path d="M10.8145,18.1406A7.1851,7.1851,0,0,1,8,12a8.0092,8.0092,0,0,1,8-8V2A10.0111,10.0111,0,0,0,6,12a9.1793,9.1793,0,0,0,3.46,7.6162C10.4717,20.5508,11,21.0815,11,22h2C13,20.16,11.8892,19.1338,10.8145,18.1406Z" transform="translate(0 0)"/><polygon points="21 9.59 17.41 6 16 7.41 21 12.41 30 3.41 28.59 2 21 9.59"/><path d="M23.8,14a7.28,7.28,0,0,1-2.6219,4.1426C20.1069,19.1348,19,20.1611,19,22h2c0-.9194.5264-1.45,1.5352-2.3857A9.1426,9.1426,0,0,0,25.8389,14Z" transform="translate(0 0)"/><rect class="cls-1" data-name="&lt;Transparent Rectangle&gt;" height="32" id="_Transparent_Rectangle_" width="32"/></svg>
+            <h3 class="text-xl font-bold">AI-Powered Suggestions</h3>
+            <p class="text-muted-foreground text-center">Get creative recipe ideas based on ingredients you have.</p>
+          </div>
+          <div class="feature-card">
+            <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="122.879px" height="103.461px" viewBox="0 0 122.879 103.461" enable-background="new 0 0 122.879 103.461" xml:space="preserve"><g><path d="M85.275,18.308c9.75,1.166,18.492,5.614,25.09,12.21c7.732,7.732,12.514,18.415,12.514,30.212 c0,11.799-4.781,22.482-12.514,30.215s-18.416,12.516-30.215,12.516s-22.48-4.783-30.213-12.516S37.422,72.529,37.422,60.73 c0-11.798,4.783-22.48,12.515-30.212c7.083-7.083,16.643-11.691,27.266-12.415v-7.167c0-0.109,0.006-0.216,0.014-0.323h-8.004 c-1.313,0-2.385-1.074-2.385-2.386V2.386C66.828,1.074,67.9,0,69.213,0h24.053c1.313,0,2.387,1.074,2.387,2.386v5.841 c0,1.313-1.074,2.386-2.387,2.386h-8.004c0.01,0.106,0.014,0.214,0.014,0.323V18.308L85.275,18.308z M83.582,54.348 c2.271,1.223,3.814,3.623,3.814,6.383c0,4.002-3.244,7.248-7.246,7.248s-7.246-3.246-7.246-7.248c0-2.76,1.545-5.16,3.816-6.383 V37.744c0-1.895,1.535-3.431,3.43-3.431s3.432,1.536,3.432,3.431V54.348L83.582,54.348z M10.527,84.598 c-1.895,0-3.431-1.537-3.431-3.432s1.536-3.43,3.431-3.43h19.378c1.895,0,3.43,1.535,3.43,3.43s-1.536,3.432-3.43,3.432H10.527 L10.527,84.598z M3.43,64.424c-1.895,0-3.43-1.535-3.43-3.43s1.536-3.432,3.43-3.432h22.447c1.894,0,3.43,1.537,3.43,3.432 s-1.536,3.43-3.43,3.43H3.43L3.43,64.424z M10.354,44.774c-1.895,0-3.43-1.536-3.43-3.43s1.536-3.431,3.43-3.431h19.229 c1.895,0,3.431,1.536,3.431,3.431s-1.536,3.43-3.431,3.43H10.354L10.354,44.774z M118.527,31.215 c1.658-3.958,1.461-8.104-0.912-10.882c-2.848-3.333-7.996-3.715-12.777-1.37C109.902,22.436,114.5,26.476,118.527,31.215 L118.527,31.215z M41.775,31.215c-1.659-3.958-1.462-8.104,0.911-10.882c2.848-3.333,7.996-3.715,12.777-1.37 C50.4,22.436,45.801,26.476,41.775,31.215L41.775,31.215z M105.514,35.369c-6.49-6.491-15.457-10.505-25.363-10.505 c-9.904,0-18.872,4.015-25.362,10.505c-6.491,6.49-10.505,15.458-10.505,25.362c0,9.906,4.015,18.873,10.505,25.363 S70.246,96.6,80.15,96.6c9.906,0,18.873-4.016,25.363-10.506S116.02,70.637,116.02,60.73 C116.02,50.826,112.004,41.859,105.514,35.369L105.514,35.369z"/></g></svg>
+            <h3 class="text-xl font-bold">Quick and Easy</h3>
+            <p class="text-muted-foreground text-center">Generate recipes in seconds, saving you time and effort.</p>
+          </div>
+          <div class="feature-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+              <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+            </svg>
+            <h3 class="text-xl font-bold">Get Youtube Search</h3>
+            <p class="text-muted-foreground text-center">Get recipe videos in seconds from youtube..</p>
+          </div>
+        </div>
+      </div>
     </section>
-
-    <section>
-        <h2 class="heading2 subscribe">Subscribe to Our Newsletter</h2>
-        <form action="/subscribe" method="post">
-            <label class="label" for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Subscribe</button>
-        </form>
-    </section>
-
+    
+    <section class="section">
+        <div class="container">
+          <div class="content-center">
+            <div class="text-content">
+              <h2 class="title">Start Cooking with AI Today</h2>
+              <p class="description">
+                Join thousands of happy cooks and start creating delicious, personalized recipes with ChefAI.
+              </p>
+            </div>
+            <div class="button-container">
+              <button class="cta-button">
+                Get Started for Free
+                <span class="arrow-right">→</span>
+              </button>
+              <p class="note">No credit card required.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <p class="footer-text">© 2023 ChefAI. All rights reserved.</p>
+        <nav class="footer-nav">
+          <a class="footer-link" href="#">Terms of Service</a>
+          <a class="footer-link" href="#">Privacy</a>
+        </nav>
+      </footer>
+    
 </body>
 </html>

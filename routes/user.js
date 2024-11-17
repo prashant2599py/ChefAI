@@ -36,8 +36,7 @@ router.post('/signup', async (req, res) => {
             email : email,
             password : password
         })
-        res.status(200).redirect('/generator');
-        // res.redirect('/generator') ;   
+        res.status(200).redirect('/generator');   
     }catch(error){
         res.status(500).json({
             message : "Something wrong with your Credentials. Use different ID"
@@ -46,9 +45,7 @@ router.post('/signup', async (req, res) => {
            
 })
 
-router.post("/signin", async (req, res) => {
-
-    
+router.post("/signin", async (req, res) => {  
     const email = req.body.email;
     const password = req.body.password
 
@@ -72,7 +69,6 @@ router.post("/signin", async (req, res) => {
 })
 
 router.get("/blogs", checkForAuthenticationCookie("token"), async (req, res) => {
-    // console.log(req)
     const allBlogs = await Blog.find({})
     res.locals.user = req.user;
     res.render("AllBlogs", {

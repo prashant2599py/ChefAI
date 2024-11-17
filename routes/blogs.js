@@ -48,15 +48,12 @@ router.get('/:id', async (req, res) => {
   })
 
 router.post("/All", upload.single('coverImage'), async (req, res)=> {
-  console.log("Inside All Route")
-  // console.log(req.file);
   try{
     const { title, body } = req.body;
-    // console.log(req.body);
     if (!title || !body) {
       return res.status(400).json({ error: 'Title and body are required' });
     }
-    console.log(req.file);
+    // console.log(req.file);
 
     const blog = await Blog.create({
           title,
@@ -66,7 +63,6 @@ router.post("/All", upload.single('coverImage'), async (req, res)=> {
       })  
       return res.redirect(`/blog/${blog._id}`) // redirects to blog/id of user, To which user it belongs
   }catch(err){
-    console.log(err);
     res.status(500).send("Error ")
   }
 })
@@ -113,15 +109,15 @@ router.post('/signin' , async ( req, res) => {
         })
         return res.redirect('/AllBlogs');
       }catch(error){
-        // console.log(error)
           res.render('signin', {
           error : "Incorrect Email or password"
         })
       }
 })
 
-
-
-
+router.post("/delete/:id", async(req, res) => {
+  const id = req.params.id;
+  const blogDeleted = await Blog.delete()
+})
 
 module.exports = router;

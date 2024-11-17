@@ -16,10 +16,10 @@
           
         <div class="heading-container mt-4 mx-4">
             <h3>Create an Account</h3>
-            <h6>Already have an account <a href="/user/signin" class="text-muted">Signin</a></h6>
+            <h6>Already have an account <a href="/user/signin" class="text-muted" >Signin</a></h6>
         </div>
 
-        <div class="form-container">
+        <div class="form-container mt-4">
           <form id="authForm" method="post">
             <input type="hidden" id="context" name="context" value="aiSearch">
               <div class="form-floating mb-3">
@@ -44,11 +44,22 @@
 
       <div class="right-container">
         <div class="thought">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, fugiat?
-        </div>   
+          <span> One who you all need to: <br></span>
+          <span id="element"></span>
+      </div>   
       </div>
     </div>
     <%- include('./partials/scripts') %>
 </body>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+  <script>
+  var typed = new Typed('#element', {
+    strings: ['Bake something for your loved one.', 'For a perfect date night.', 'To make you feel special.', 'Refresh your mind.'],
+    typeSpeed: 80,
+    loop: true,
+  });
+  </script>
 <script src="/javascripts/login.js" />
+
 </html>
