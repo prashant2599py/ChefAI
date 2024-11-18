@@ -79,10 +79,6 @@ app.get("/utube", (req, res) => {
    });
 })
 
-
-app.get('/about', (req, res) => {
-   res.render('About');
-})
 app.get('/contact', (req, res) => {
    res.render('Contact');
 })

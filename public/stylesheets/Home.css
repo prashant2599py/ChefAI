@@ -35,6 +35,44 @@ header p {
 .nav-detail a:hover {
     color: #007bff; 
 }
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+  }
+
+  header p {
+      font-size: 30px; 
+      margin-bottom: 10px;
+  }
+
+  .nav-detail {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 10px;
+  }
+
+  .nav-detail a {
+      font-size: 16px; 
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+      padding: 10px 15px;
+  }
+
+  header p {
+      font-size: 24px; 
+  }
+
+  .nav-detail a {
+      font-size: 14px; 
+  }
+}
 
 .container {
     display: flex;
@@ -83,6 +121,58 @@ header p {
     font-size: 16px;
     
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+      height: auto;
+      padding: 20px;
+  }
+
+  .heading1 p {
+    margin-top: 12px;
+      font-size: 36px; 
+  }
+
+  .subheading1 p {
+      font-size: 18px;
+      max-width: 90%;
+  }
+
+  .front-input input {
+      width: 80%; 
+      font-size: 16px; 
+  }
+
+  .btn-sub {
+      margin-top: 12px;
+      width: 170px; 
+      height: 45px;
+      font-size: 18px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .heading1 p {
+      font-size: 28px;
+  }
+
+  .subheading1 p {
+      font-size: 16px; 
+  }
+
+  .front-input input {
+      width: 90%; 
+      height: 40px; 
+      font-size: 14px;
+  }
+
+  .btn-sub {
+      height: 50px; 
+      width: 90%;
+      font-size: 16px; 
+  }
+}
 /* Global styles */
 * {
   margin: 0;
@@ -96,15 +186,15 @@ body {
 }
 
 .bg-muted {
-  background-color: #f8f9fa; /* Adjust for muted background color */
+  background-color: #f8f9fa; 
 }
 
 .text-primary {
-  color: #1d4ed8; /* Adjust for primary color */
+  color: #1d4ed8; 
 }
 
 .text-muted-foreground {
-  color: #6c757d; /* Adjust for muted foreground text */
+  color: #6c757d; 
 }
 
 .text-center {
@@ -326,12 +416,12 @@ body {
   box-sizing: border-box;
 }
 
-/* Ensure body does not exceed the viewport */
+
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
 }
 
@@ -344,7 +434,7 @@ body {
   justify-content: space-between;
   padding: 1.5rem 1rem;
   width: 100%;
-  border-top: 1px solid #ccc; /* Border at the top */
+  border-top: 1px solid #ccc; 
 }
 
 @media (min-width: 640px) {
@@ -355,7 +445,7 @@ body {
 
 .footer-text {
   font-size: 0.75rem;
-  color: #6c757d; /* Muted foreground */
+  color: #6c757d; 
   text-align: center;
 }
 

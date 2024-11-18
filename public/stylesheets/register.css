@@ -54,19 +54,19 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 40px;
     color: whitesmoke;
-    margin-left: 20px;    
+       
 }
 
 h6{
     display: flex;
     font-weight: 400;
-    /* color: rgb(247, 213, 213); */
+ 
 }
  h6 > a {
     text-decoration: none;
     background-color: white;
     padding: 2px 2px;
-    color: whitesmoke;   /* Use !important if needed */
+    color: whitesmoke;  
     margin-left: 12px;
     border-radius: 4px;
 }
@@ -79,3 +79,42 @@ h6{
     width: 200px;
 
 }
+
+/* Mobile responsiveness */
+@media (max-width: 820px) {
+    .outer-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        height: 100vh;
+    }
+
+    .left-container {
+        padding: 10px;
+    }
+    .right-container{
+        display: flex;
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 0 10%;
+    }
+
+    .thought span {
+        font-size: 20px; 
+        margin-left: 10px; 
+    }
+    .left-container h3{
+        font-size: 18px;
+    }
+    .left-container h6 {
+        font-size: 12px;  
+    }
+
+    .button {
+        width: 100%;  
+        justify-content: center;  
+        margin-top: 12px;
+    }
+}
+
