@@ -106,7 +106,7 @@ app.post('/contact', async (req, res) => {
 
 })
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
     console.log(`Server is listening at port:${PORT}`);
