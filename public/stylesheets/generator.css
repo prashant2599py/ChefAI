@@ -10,17 +10,19 @@ body {
     flex-direction: column;
   }
   #btn-primary{
-    width: 180px;
+    width: 110px;
     height: 45px;
     font-size: 20px;
     font-weight: 600;
-    background-color: #508f8b;
+    background-color: #505252;
     border-radius: 8px;
     border: none;
+    cursor: pointer;
   }
   
   h1 {
     text-align: center;
+    color: white;
   }
   
   h2 {
@@ -44,8 +46,8 @@ body {
     padding: 40px;
     width: 720px;
     border-radius: 24px;
-    background-color: #201f1f;
-    box-shadow: rgba(246, 232, 232, 0.926) 0px 10px 50px;
+    background-color: #302f2f;
+    box-shadow: rgba(184, 180, 180, 0.926) 0px 10px 30px;
   }
   
   form {
@@ -157,12 +159,13 @@ body {
 /* Responsive styles */
 @media (max-width: 768px) {
   .container {
-    width: 90%; 
+    width: 80%; 
     margin: 32px auto;
     padding: 20px; 
   }
 
   form {
+    /* width: 80%; */
     flex-direction: column; 
     align-items: center;
   }
@@ -171,24 +174,24 @@ body {
     width: 100px;
   }
   .instructions {
-    width: 100%; 
-    margin-bottom: 12px;
+    width: 90%; 
+    margin-bottom: 15px;
   }
 
   .submit-button {
-    width: 150px;
+    width: 120px;
     padding: 12px; 
     margin-left: 0; 
   }
 
   .button {
-    width: 150px; 
+    width: 120px; 
     margin-left: 0;
     margin-top: 12px;
   }
 
   h1 {
-    font-size: 24px; 
+    font-size: 30px; 
     margin-bottom: 16px;
   }
 
@@ -204,8 +207,12 @@ body {
     font-size: 16px; 
     overflow-x: hidden;
   }
+  
+  .container{
+    margin: 20px 20px;
+  }
   #inputValue{
-    width: 300px;
+    width: 80%
   }
 
   #btn-primary {
@@ -220,16 +227,16 @@ body {
   }
 
   .submit-button{
-    width: 150px;
+    width: 120px;
   }
   .button {
-    width: 200px;
+    width: 120px;
     font-size: 16px; 
     padding: 10px;
   }
 
   h1 {
-    font-size: 20px; 
+    font-size: 30px; 
   }
 
   .loader {
