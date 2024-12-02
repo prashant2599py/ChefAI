@@ -32,7 +32,7 @@ app.use(setUserLocals)
 app.set('view engine', 'ejs');
 app.set('views', path.resolve("./views"));
 app.use(express.static(path.resolve('./public')));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve uploaded files
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve uploaded files
 
 app.use((err, req, res, next) => {
    console.error(err.stack);
