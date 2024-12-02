@@ -3,7 +3,7 @@ body {
     font-family: "Merriweather", serif;
     line-height: 1.5;
     text-align: left;
-    background-color: #f7fff7;
+    background-color: #0b0c0b;
     color: #292f36;
     min-height: 100vh;
     display: flex;
@@ -51,6 +51,7 @@ body {
   form {
     display: flex;
     padding: 0 0 12px 0;
+    background-color: #444444;
   }
   
   .instructions {
