@@ -10,7 +10,7 @@ function displayRecipe(response) {
   function generateRecipe(event) {
     event.preventDefault();
     let instructionInput = document.querySelector("#inputvalue");
-    let api_Key = API_KEY;
+    let api_Key = process.env.API_KEY;
     let prompt = `User instructions: Generate a recipe for ${instructionInput.value}`;
     let context =
       "You are a renowned chef who knows all the recipes around the world. Follow the user instructions clearly to generate a recipe. First, write the 'title' of the recipe inside a <h2> element. Secondly, summarize the 'cooking duration' and 'serving size' inside a standard <p> element. Thirdly, begin with the 'Ingredients' header inside a <h3> element, list the required ingredients in bullet point symbol, and separate each line item with a <br/>. Next, begin with the 'Instructions' header inside a <h3> element, list the recipe step-by-step in numbered list format, and separate each step with a <br/>. Lastly, sign off the recipe with 'SheCodes AI Recipe' inside an <em> element at the end of the recipe after a <br/>.";

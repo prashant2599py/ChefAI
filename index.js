@@ -10,6 +10,7 @@ const Contact = require('./models/contact');
 const Blogs = require('./models/blogs');
 const User = require('./models/user');
 const session = require('express-session');
+const { default: axios } = require('axios');
 
 app.use(session({
   secret: 'your_secret_key',
@@ -70,13 +71,29 @@ app.get('/AllBlogs', async (req, res) => {
    }
 })
 
-app.get("/utube", (req, res) => {
+app.get("/utube", async (req, res) => {
    const queryString  = req.query.q;
    const decodedString = decodeURIComponent(queryString);
-   res.render('utube',{
-      youtube_apiKey : process.env.YOUTUBE_API_KEY,
-      textData : decodedString
-   });
+   
+   try{
+      const apiKey = process.env.YOUTUBE_API_KEY;
+      const response = await axios.get(`https://youtube.googleapis.com/youtube/v3/search`, {
+         params : {
+            key : apiKey,
+            type: 'video',
+            part: 'snippet',
+            q: decodedString,
+            maxResults: 50
+         }
+      })
+      res.render('utube', {
+         videos: response.data.items,
+         textData : decodedString,
+      })
+   }catch(error){
+      console.error(error);
+      res.status(500).json({message : "Error fetching youtube videos"})
+   }
 })
 
 app.get('/contact', (req, res) => {

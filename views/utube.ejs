@@ -11,14 +11,19 @@
     <h1>Desired Response videos</h1>
     <div class="video-grid">
         <div class="loader"></div>
+        <% if (videos && videos.length > 0) { %>
+            <% videos.forEach(function(element) { %>
+                <div class="video-item">
+                    <a target="_blank" href="https://www.youtube.com/watch?v=<%= element.id.videoId %>">
+                        <img src="<%= element.snippet.thumbnails.high.url %>" alt="recipe_photo" />
+                    </a>
+                    <h3><%= element.snippet.title %></h3>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No videos found.</p>
+        <% } %>
     </div>
-   
-    <script>
-        const YOUTUBE_APIKEY = "<%= youtube_apiKey %>";
-        const queryData = "<%= textData %>";
-    </script>
-  
-
-    <script defer src="/javascripts/utube.js"></script>
+    
 </body>
 </html>
