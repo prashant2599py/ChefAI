@@ -51,7 +51,9 @@ router.post("/All", upload.single('coverImage'), async (req, res)=> {
   try{
     const { title, body } = req.body;
     if (!title || !body) {
-      return res.status(400).json({ error: 'Title and body are required' });
+      return res.render('/blog/All', {
+        error : "All fields are required"
+      })
     }
     // console.log(req.file);
 
