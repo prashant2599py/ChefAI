@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const { checkForAuthenticationCookie, setUserLocals } = require('./middlewares/user');
 const Contact = require('./models/contact');
 const Blogs = require('./models/blogs');
-const User = require('./models/user');
+// const User = require('./models/user');
 const session = require('express-session');
 const { default: axios } = require('axios');
 

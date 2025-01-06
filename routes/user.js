@@ -1,4 +1,6 @@
+require('dotenv').config();
 const { Router } = require("express");
+const jwt = require('jsonwebtoken')
 const router = Router();
 const { User } = require("../models/user");
 const { checkForAuthenticationCookie } = require("../middlewares/user");
@@ -31,12 +33,20 @@ router.post('/signup', async (req, res) => {
             return;
         }
 
-        await User.create({
+       const user =  User.create({
             username : username,
             email : email,
             password : password
         })
-        res.status(200).redirect('/generator');   
+        await user.save();
+        const token = jwt.sign({id : user._id}, process.env.JWT_SECRET , {
+            expiresIn: '1h'
+        })
+        res.cookie("token", token, {
+            httpOnly: true,
+            maxAge: 3600000, // 1 hour
+        })
+        return res.redirect('/generator');   
     }catch(error){
         res.status(500).json({
             message : "Something wrong with your Credentials. Use different ID"
