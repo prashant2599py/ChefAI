@@ -1,11 +1,15 @@
 require('dotenv').config();
-const { Router } = require("express");
 const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser');
+const { Router } = require("express");
+
 const router = Router();
 const { User } = require("../models/user");
 const { checkForAuthenticationCookie } = require("../middlewares/user");
 
 const Blog = require("../models/blogs")
+
+router.use(cookieParser());
 
 router.get('/signup', (req, res)=> {
     res.render('signup')
@@ -33,17 +37,20 @@ router.post('/signup', async (req, res) => {
             return;
         }
 
-       const user =  User.create({
+       const user = await User.create({
             username : username,
             email : email,
             password : password
         })
-        await user.save();
+        // console.log("user : " + user)
+        
         const token = jwt.sign({id : user._id}, process.env.JWT_SECRET , {
             expiresIn: '1h'
         })
+
         res.cookie("token", token, {
             httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Set secure flag if in production
             maxAge: 3600000, // 1 hour
         })
         return res.redirect('/generator');   
