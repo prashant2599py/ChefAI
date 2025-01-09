@@ -30,24 +30,25 @@ router.get('/signin', (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const blog = await Blog.findById(req.params.id).populate("createdBy");
+  // console.log(blog)
   const comments = await Comment.find({blogId : req.params.id}).populate('createdBy');
+  // console.log(comments)
   return res.render('BlogWithUser', {
-    user: req.user,
     blog,
     comments,
   })
 })
 
-  router.post('/comment/:blogId', async (req, res) => {
-    await Comment.create({
-      content: req.body.content,
-      blogId: req.params.blogId,
-      createdBy: req.user._id
-    })
-    return res.redirect(`/blog/${req.params.blogId}`)
+router.post('/comment/:blogId', async (req, res) => {
+  await Comment.create({
+    content: req.body.content,
+    blogId: req.params.blogId,
+    createdBy: req.user._id
   })
+  return res.redirect(`/blog/${req.params.blogId}`)
+})
 
-router.post("/All", upload.single('coverImage'), async (req, res)=> {
+router.post("/create", upload.single('coverImage'), async (req, res)=> {
   try{
     const { title, body } = req.body;
     if (!title || !body) {
@@ -56,7 +57,7 @@ router.post("/All", upload.single('coverImage'), async (req, res)=> {
       })
     }
     // console.log(req.file);
-
+    // console.log(req.user);
     const blog = await Blog.create({
           title,
           body,
@@ -89,7 +90,7 @@ router.post('/signup', async (req, res) => {
         username : newUser.username,
         email : newUser.email
       }
-      res.status(200).redirect('/AllBlogs')
+      res.status(200).redirect('/user/blogs')
 
     }catch(err){
         res.status(500).json({
@@ -109,7 +110,7 @@ router.post('/signin' , async ( req, res) => {
             sameSite: 'Strict',
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         })
-        return res.redirect('/AllBlogs');
+        return res.redirect('/user/blogs');
       }catch(error){
           res.render('signin', {
           error : "Incorrect Email or password"
@@ -117,9 +118,9 @@ router.post('/signin' , async ( req, res) => {
       }
 })
 
-router.post("/delete/:id", async(req, res) => {
-  const id = req.params.id;
-  const blogDeleted = await Blog.delete()
-})
+// router.post("/delete/:id", async(req, res) => {
+//   const id = req.params.id;
+//   const blogDeleted = await Blog.delete()
+// })
 
 module.exports = router;

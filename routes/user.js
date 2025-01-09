@@ -87,9 +87,12 @@ router.post("/signin", async (req, res) => {
 
 router.get("/blogs", checkForAuthenticationCookie("token"), async (req, res) => {
     const allBlogs = await Blog.find({})
-    res.locals.user = req.user;
+    // res.locals.user = req.user;
+    // const id = req.user._id;
+    // const user = await User.findOne({id})
+    // console.log(user);
     res.render("AllBlogs", {
-        user: req.user, 
+      
         blogs: allBlogs
     })
  })

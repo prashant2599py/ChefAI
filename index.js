@@ -53,23 +53,25 @@ app.get('/generator', (req, res) => {
       apiKey : process.env.OPENAI_API_KEY,
    })
 })
-app.get('/AllBlogs', async (req, res) => {
-   try{
-      const allBlogs = await Blogs.find({})
-      const user = req.session.user;
+// app.get('/AllBlogs', async (req, res) => {
+//    try{
+//       const allBlogs = await Blogs.find({})
+//       // const user = req.session.user;
+//       const user = req.cookies['token']
+//       console.log(user);
 
-      res.locals.user = user; 
-       res.render("AllBlogs", {
-          user : user,
-          blogs: allBlogs
-         })
+//       res.locals.user = user; 
+//        res.render("AllBlogs", {
+//           user : user,
+//           blogs: allBlogs
+//          })
       
-   }catch(error){
-      res.status(500).json({
-         message : "Unable to fetch Blogs"
-      })
-   }
-})
+//    }catch(error){
+//       res.status(500).json({
+//          message : "Unable to fetch Blogs"
+//       })
+//    }
+// })
 
 app.get("/utube", async (req, res) => {
    const queryString  = req.query.q;
